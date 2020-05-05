@@ -1,0 +1,21 @@
+
+.filmbox{
+  box-shadow: 0 0 10px black;
+  margin: 5px;
+  background: #bdc3c7;
+  padding: 20px;
+
+}
+
+.filmbox h2{
+  padding-top: 5px !important;
+  margin-top: 0px !important;
+}
+
+table tr:last-child th {
+  vertical-align: top;
+}
+
+.fa{
+  color: orange;
+}

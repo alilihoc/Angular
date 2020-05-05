@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="raw">
+    <div class="col-xs-12">
+      <div class="films">
+        <h1 style="text-align: center">Liste de films
+          <span class="nbr" *ngIf="listMovies.length > 0">({{listMovies.length}})</span>
+        </h1>
+        <div class="alert" *ngIf="listMovies.length == 0">Pas de film</div>
+        <div class="film" *ngFor="let movie of listMovies" (click)="clickFilm(movie.title)">
+          <div class="col-sm-10 col-sm-push-1 filmbox" movieHover routerLink="/film/{{ movie.id }}">
+            <div class="col-sm-2">
+              <img class="img-responsive img-thumbnail" src="{{ movie.link}}">
+            </div>
+            <div class="col-sm-10">
+              <h2 class="filmtitle">
+                <strong>{{ movie.title}}</strong>
+              </h2>
+              <table>
+                <tr>
+                  <th width="50%">Réalisateur</th>
+                  <td width="50%">{{ movie.director}}</td>
+                </tr>
+                <tr>
+                  <th>Acteurs </th>
+                  <td>{{ movie.actors }}</td>
+                </tr>
+                <tr>
+                  <th>Genre </th>
+                  <td>{{ movie.type}}</td>
+                </tr>
+                <tr>
+                  <th>Sortie</th>
+                  <td>{{ movie.release | date :'dd MMMM yyyy' }}</td>
+                </tr>
+                <tr>
+                  <th>Note </th>
+                  <td [innerHtml] = "movie.note | filmStars"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

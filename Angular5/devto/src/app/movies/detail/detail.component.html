@@ -1,0 +1,48 @@
+<div class="raw">
+  <div class="films">
+    <h1 style="text-align: center">Liste d'un film</h1>
+    <div class="film">
+      <div class="container-fluid">
+        <div class="raw">
+          <div class="col-xs-12 filmbox">
+            <div class="col-sm-4">
+              <img class="img-responsive img-thumbnail" src="{{ film.link}}">
+            </div>
+            <div class="col-sm-8">
+              <h2 class="filmtitle">
+                <strong>{{ film.title}}</strong>
+              </h2>
+              <table>
+                <tr>
+                  <th width="20%">Réalisateur</th>
+                  <td width="50%">{{ film.director}}</td>
+                </tr>
+                <tr>
+                  <th>Acteurs </th>
+                  <td>{{ film.actors }}</td>
+                </tr>
+                <tr>
+                  <th>Genre </th>
+                  <td>{{ film.type}}</td>
+                </tr>
+                <tr>
+                  <th>Sortie</th>
+                  <td>{{ film.release | date :'dd MMMM yyyy' }}</td>
+                </tr>
+                <tr class="spaceb">
+                  <th>Note </th>
+                  <td [innerHtml] = "film.note | filmStars"></td>
+                </tr>
+                <hr>
+                <tr>
+                  <th rowspan="2">Synopsis </th>
+                  <td rowspan="2" [innerHtml] = "film.content"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

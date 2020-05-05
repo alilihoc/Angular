@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-push-1 filmbox">
+      <form class="form-horizontal" enctype="multipart/form-data" #movieForm="ngForm" (ngSubmit)="addmovie(movie)">
+        <h3 style="text-align: center">Ajouter un Article</h3>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label">Titre de l'Article</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" name="titre" [(ngModel)]="movie.title" #title="ngModel">
+          </div>
+        </div>
+        <div *ngIf="!title.invalid && title.touched" class="alert alert-danger">
+          Vous devez saisir un titre de film
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-2 control-label">Catégorie</label>
+          <div class="col-md-8">
+            <select [(ngModel)]="movie.type" name="categorie" class="form-control">
+              <option *ngFor="let categorie of type" [value]="categorie">{{ categorie}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label">Acteurs</label>
+          <div class="col-md-8">
+            <input type="text" name="acteurs" [(ngModel)]="movie.actors" class="form-control" required minlength="5">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label">Producteur</label>
+          <div class="col-md-8">
+            <input type="text" name="director" [(ngModel)]="movie.actors" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label">Contenu</label>
+          <div class="col-md-8">
+            <textarea name="contenu" [(ngModel)]="movie.content" class="form-control" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label" required>
+            Featured Image <em>(Image à la Une)</em>
+          </label>
+          <div class="col-md-8">
+            <input type="text" [(ngModel)]="movie.link" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label">Note</label>
+          <div class="col-md-8">
+            <input type="number" name="rate" [(ngModel)]="movie.note" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-7 col-xs-push-3">
+            <input type="submit" [disabled]="!movieForm.form.valid" class="btn btn-primary btn-lg">
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
